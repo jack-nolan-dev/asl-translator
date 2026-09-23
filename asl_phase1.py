@@ -27,7 +27,10 @@ def result_callback(result: HandLandmarkerResult, output_image: mp.Image, timest
     latest_result = result
 
 options = HandLandmarkerOptions(
-    base_options=BaseOptions(model_asset_path=MODEL_PATH),
+    base_options=BaseOptions(
+        model_asset_path=MODEL_PATH,
+        delegate=BaseOptions.Delegate.CPU
+    ),
     running_mode=VisionRunningMode.LIVE_STREAM,
     num_hands=2,
     min_hand_detection_confidence=0.7,
